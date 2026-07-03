@@ -13,7 +13,7 @@ const statusText = document.getElementById('statusText');
 
 const STORAGE_KEY = 'lottery-history-2digit';
 let history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-const MAX_HISTORY = 15;
+const MAX_HISTORY = 48;
 
 function saveHistory() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
@@ -142,6 +142,7 @@ function getThaiRathArchiveYearUrls() {
   return [
     `${THAIRATH_ARCHIVE_PAGE}/${thaiYear}`,
     `${THAIRATH_ARCHIVE_PAGE}/${thaiYear - 1}`,
+    `${THAIRATH_ARCHIVE_PAGE}/${thaiYear - 2}`,
   ];
 }
 
@@ -199,7 +200,7 @@ async function fetchHistoryFromWeb() {
     history = collected.slice(0, MAX_HISTORY);
     saveHistory();
     updateUI();
-    notify(`ดึงข้อมูลสำเร็จ ${history.length} งวด${history.length < MAX_HISTORY ? ' (ไม่ครบ 15 งวด)' : ''}`);
+    notify(`ดึงข้อมูลสำเร็จ ${history.length} งวด${history.length < MAX_HISTORY ? ' (ไม่ครบ 48 งวด)' : ''}`);
   } catch (error) {
     notify(`ไม่สามารถดึงข้อมูลจากเว็บหวยได้: ${error.message || error}`);
     console.error(error);
@@ -221,6 +222,10 @@ calculateBtn.addEventListener('click', () => {
   }
   updateAnalysisPanels();
   notify('อัปเดตการวิเคราะห์เลขเรียบร้อยแล้ว');
+});
+
+window.addEventListener('load', () => {
+  fetchHistoryFromWeb();
 });
 
 updateUI();
