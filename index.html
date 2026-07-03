@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เว็บวิเคราะห์เลข 2 ตัว</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">"Wording" Lottery</span>
+        <h1>โหลดเลขท้าย 2 ตัวย้อนหลัง พร้อมสรุปสถิติ</h1>
+        <p>ดึงข้อมูลล่าสุดจาก ThaiRath archive เพื่อแสดงเลขย้อนหลัง 15 งวด พร้อมคำทำนาย และเลขที่ออกบ่อย/ไม่ค่อยออก</p>
+      </div>
+    </div>
+
+    <div class="grid-layout">
+      <section class="panel panel-main">
+        <div class="panel-header">
+          <div>
+            <h2>โหลดเลขย้อนหลังจากเว็บหวย</h2>
+            <p>ดึงเลขท้าย 2 ตัวล่าสุดจาก ThaiRath พร้อมวิเคราะห์ข้อมูลย้อนหลัง 15 งวด</p>
+          </div>
+        </div>
+        <div class="history-card">
+          <div class="history-title">
+            <div>
+              <span class="dot red"></span>
+              <span>เลขย้อนหลัง (15 งวด)</span>
+            </div>
+            <span id="historyCount">0/15</span>
+          </div>
+
+          <div class="history-grid" id="historyGrid"></div>
+        </div>
+
+        <div class="action-strip">
+          <button id="fetchWebBtn" class="primary-button">โหลดเลขย้อนหลัง</button>
+          <button id="calculateBtn" class="secondary-button">คำนวณทำนายงวดถัดไป</button>
+          <span class="status-text" id="statusText">กดโหลดเลขย้อนหลังเพื่อเริ่มวิเคราะห์</span>
+        </div>
+        <div class="status-note">ข้อมูลจะถูกดึงจาก ThaiRath archive ปีปัจจุบันและปีก่อนหน้า</div>
+      </section>
+
+      <aside class="panel panel-sidebar">
+        <div class="info-panel highlight-panel">
+          <div class="panel-title">
+            <span>🎯 เลขทำนายงวดถัดไป</span>
+            <span class="badge">วิเคราะห์จาก 15 งวดย้อนหลัง</span>
+          </div>
+          <div class="prediction-grid" id="predictionGrid"></div>
+        </div>
+
+        <div class="info-panel">
+          <div class="panel-title">
+            <span>🔥 เลขที่ออกบ่อย</span>
+            <span class="small-text">จัดอันดับจากความถี่</span>
+          </div>
+          <div class="tag-list" id="hotNumbers"></div>
+        </div>
+
+        <div class="info-panel">
+          <div class="panel-title">
+            <span>❄️ เลขที่ไม่ค่อยออก</span>
+            <span class="small-text">เลขที่ยังไม่เคยออกหรือออกน้อย</span>
+          </div>
+          <div class="tag-list cold" id="coldNumbers"></div>
+        </div>
+
+        <div class="info-panel compact-panel">
+          <div class="panel-title">
+            <span>📊 วิเคราะห์รูปแบบ</span>
+          </div>
+          <div class="ratio-row">
+            <div>
+              <span>เลขคี่</span>
+              <strong id="oddCount">0</strong>
+            </div>
+            <div>
+              <span>เลขคู่</span>
+              <strong id="evenCount">0</strong>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="evenFill"></div>
+          </div>
+          <div class="stat-line">
+            <span>ผลรวมทั้งหมด</span>
+            <strong id="totalSum">0</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
